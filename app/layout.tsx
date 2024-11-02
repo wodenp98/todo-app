@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import TanstackProvider from "@/lib/providers/TanstackProvider";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -28,7 +29,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <TanstackProvider>
+          <main className="grow">
+            <div className="flex flex-col min-h-screen overflow-hidden">
+              {children}
+            </div>
+          </main>
+        </TanstackProvider>
       </body>
     </html>
   );
